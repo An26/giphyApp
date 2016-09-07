@@ -1,7 +1,34 @@
-form {
-	float: left;
+body{
+	font-family: 'Monoton', cursive;
+	text-align: center;
+}
+
+h1 {
+	font-size: 70px;
+}
+
+aside {
+	float: none;
+	padding: 50px;
+	margin:20px;
+	background-color: #9CCB19;
+	font-family: 'BioRhyme', serif;
 }
 
 .gifThings {
 	float: right;
+	font-family: 'BioRhyme', serif;
 }
+
+button {
+	font-family: 'BioRhyme', serif;
+	padding: 10px;
+	margin: 10px;
+}
+
+.cartoonButtonHere {
+	border: 5px solid black;
+	margin: 40px;
+	padding: 40px;
+}
+

@@ -2,33 +2,30 @@
 <html>
 <head>
 	<title>Cartoon Giphys!!!</title>
+	<link href="https://fonts.googleapis.com/css?family=BioRhyme|Monoton" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-
+<h1>CARTOON GIPHY GALORE!</h1>
 <div class="container">
+	<aside class="sideBar">
+	<h2>Add a Cartoon here!</h2>
+	<h4>Search and Add: </h4>
+		<form id="movie-form">
+			<label for="cartoon-input">Add Cartoon</label>
+			<input type="text" id="cartoon-input">
+			<br><br>
+			<input id="addCartoon" type="submit" value="Create and Animate!">
+ 			<input id='clearButton' type="submit" value="Clear">
+		</form>
+	</aside>
 	<div class="mainContent">
 		<div class="gifThings">
-			<div class="cartoonButtons">
-				<button data-cartoon="rick and morty">Rick and Morty</button>
-				<button data-cartoon="power puff girls">Power Puff Girls</button>
-				<button data-cartoon="adventuretime">Adventuretime</button>
-				<button data-cartoon="dexter's laboratory">Dexter's Laboratory</button>
-			</div>
-
-			<div class="cartoonGifsHere"> I'm a gif and i live here when a button is pushed! yippieeee</div>
+			<div class="cartoonButtonHere"></div>
+			<div class="cartoonGifsHere"></div>
 		</div>
-
-		<form class="cartoonForm">
-			Search <br>
-		  	Cartoon name:<br>
-		  	<input class="input" type="text">
-		  	<br><br>
-		  	<input type="submit" value="Submit">
-		</form>
 	</div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
