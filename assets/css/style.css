@@ -1,35 +1,51 @@
 body{
-	font-family: 'Monoton', cursive;
 	text-align: center;
+	background-image: url(../images/concrete_seamless.png);
 }
 
-h1 {
+#title {
+
+	font-family: 'Monoton', cursive;
 	font-size: 70px;
+}
+
+#smallerTitle {
+	font-family: 'Monoton', cursive;
+	font-size: 30px;
+}
+
+#buttonTitle {
+	font-family: 'Monoton', cursive;
+	font-size: 50px;
 }
 
 aside {
 	float: none;
-	padding: 50px;
-	margin:20px;
+	border: 2px solid black;
+	margin: 10px;
+	padding: 10px;
 	background-color: #9CCB19;
 	font-family: 'BioRhyme', serif;
 }
 
 .gifThings {
-	float: right;
+	float: none;
 	font-family: 'BioRhyme', serif;
 }
 
 button {
 	font-family: 'BioRhyme', serif;
-	padding: 10px;
+	padding: 5px;
 	margin: 10px;
+	background-color: #E8F1D4;
 }
 
 .cartoonButtonHere {
-	border: 5px solid black;
-	margin: 40px;
-	padding: 40px;
+	float: left;
+	border: 2px solid black;
+	margin: 10px;
+	padding: 10px;
+	background-color: #fff;
 }
 
 div .item {

@@ -18,9 +18,14 @@ $('#addCartoon').on('click', function(){
 	var addNewCartoon = $('#cartoon-input').val().trim();
 	cartoonOptions.unshift(addNewCartoon);
 	console.log(cartoonOptions);
+	$('#cartoon-input').val("");
 	renderButtons();
 	giphyApiRequest();
+	
 	return false;
+
+
+
 });
 
 //clearing all gifs button
@@ -32,9 +37,11 @@ $('#clearButton').on('click', function() {
 //yippeeee the button stork
 function renderButtons() {
 	$('.cartoonButtonHere').empty();
+	$('.cartoonButtonHere').append('<p id=buttonTitle>Cartoons</p>');
 	for (var i = 0; i < cartoonOptions.length; i++){
 		var makeButtons = $('<button>').attr('data-cartoon', cartoonOptions[i]) .attr('class', 'cartoonButton' + [i]).html(cartoonOptions[i]);
-		$(".cartoonButtonHere").append(makeButtons);	
+		$(".cartoonButtonHere").append(makeButtons);
+
 	}
 }
 
@@ -59,9 +66,9 @@ function playPauseButton() {
 //calling information from GIPHY API
 function giphyApiRequest() {
 $('button').on('click', function() {
-        var p = $(this).data('cartoon');
+        var cartoon = $(this).data('cartoon');
         console.log(this);
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoon + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     //clearing the old cartoon gifs
 	$('.cartoonGifsHere').empty();
@@ -79,17 +86,12 @@ $('button').on('click', function() {
                 	var newGifDiv = $('<div class="item">');
                 	var gifStillImg = $('<img class="gifImg">').attr('src', response.data[i].images.fixed_height_small_still.url);
                 	gifStillImg.attr('data-still', response.data[i].images.fixed_height_small_still.url).attr('data-animate', response.data[i].images.fixed_height.url).attr('data-state', "still");
-
                 	var gifRating = $('<p class="rating">').html("Rating: " + response.data[i].rating);
-                	//var movingGif = $('<img class="movingGifImg" id="active">').attr('src', response.data[i].images.fixed_height.url);
-                	//movingGif.hide();
-
-                	newGifDiv.append(gifRating);
+                	
                 	newGifDiv.append(gifStillImg);
-                	//newGifDiv.append(movingGif);
+                	newGifDiv.append(gifRating);
                 	$('.cartoonGifsHere').prepend(newGifDiv);
                 }
-
                 playPauseButton()
 
             });
