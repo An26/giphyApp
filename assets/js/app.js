@@ -3,8 +3,8 @@ var cartoonOptions = [
 'Powerpuff Girls', 
 'Adventure Time', 
 'Dexter\'s Laboratory', 
-'Bob\'s Burgers', 'Archer', 
-'F is for Family', 
+'Bob\'s Burgers', 
+'Archer', 
 'Ren and Stimpy', 
 'The Regular Show', 
 'Marvelous Misadventures of Flapjack',
@@ -55,9 +55,12 @@ function playPauseButton() {
 		if (selectedState === 'still'){
 			$(this).attr('src', $(this).data('animate'));
 			$(this).attr('data-state', 'animate');
+			//$('this.playButton').hide();
+
 		}else{
 			$(this).attr('src', $(this).data('still'));
 			$(this).attr('data-state', 'still');
+			//$('this.playButton').show();
 		}
 
 	});
@@ -87,7 +90,9 @@ $('button').on('click', function() {
                 	var gifStillImg = $('<img class="gifImg">').attr('src', response.data[i].images.fixed_height_small_still.url);
                 	gifStillImg.attr('data-still', response.data[i].images.fixed_height_small_still.url).attr('data-animate', response.data[i].images.fixed_height.url).attr('data-state', "still");
                 	var gifRating = $('<p class="rating">').html("Rating: " + response.data[i].rating);
-                	
+                	var playButtonImg = $('<img class="playButton">').attr('src', 'assets/images/playButton.png');
+
+                	//newGifDiv.append(playButtonImg);
                 	newGifDiv.append(gifStillImg);
                 	newGifDiv.append(gifRating);
                 	$('.cartoonGifsHere').prepend(newGifDiv);

@@ -20,6 +20,7 @@ body{
 }
 
 aside {
+	position: static;
 	float: none;
 	border: 2px solid black;
 	margin: 10px;
@@ -48,12 +49,30 @@ button {
 	background-color: #fff;
 }
 
-div .item {
+.item {
 	float: left;
 	display: inline;
 	margin: 10px;
 	border:1px solid black;
 	padding: 5px;
+	background: #fff;
+	position: relative;
 }
 
+[data-state='still'] {
+	opacity: 0.5;
+}
 
+/*.playButton [data-state='still'] {
+	display: none;
+}
+
+.playButton {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	opacity: 1.0;
+	width: 50px;
+	height: 50px;
+
+}*/
