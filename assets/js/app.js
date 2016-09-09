@@ -11,12 +11,6 @@ var cartoonOptions = [
 'Spongebob Squarepants' 
 ];
 
-//creating buttons dynamically
-for (var i = 0; i < cartoonOptions.length; i++){
-	var makeButtons = $('<button>').attr('data-cartoon', cartoonOptions[i]) .attr('class', 'cartoonButton' + [i]).html(cartoonOptions[i]);
-	$(".cartoonButtonHere").append(makeButtons);
-	//giphyApiRequest();	
-}
 
 //pulling info from the form and pushing it into and arry AND turning it into a button
 $('#addCartoon').on('click', function(){
@@ -29,27 +23,37 @@ $('#addCartoon').on('click', function(){
 	return false;
 });
 
+//clearing all gifs button
 $('#clearButton').on('click', function() {
 	$('.cartoonButtonHere').empty();
 });
 
-//to animate or not to animate - clicking play/"pause" action
-// if (button is clicked){ //"play"
-// 	hide still image 
-// 	show gif
-// } else if (button is clicked again){ //"pause"
-// 	hide gif
-// 	show still image
-// }
 
-
+//yippeeee the button stork
 function renderButtons() {
 	$('.cartoonButtonHere').empty();
-	//creating buttons dynamically...again
 	for (var i = 0; i < cartoonOptions.length; i++){
 		var makeButtons = $('<button>').attr('data-cartoon', cartoonOptions[i]) .attr('class', 'cartoonButton' + [i]).html(cartoonOptions[i]);
 		$(".cartoonButtonHere").append(makeButtons);	
 	}
+}
+
+//to animate or not to animate, that is the question...
+function playPauseButton() {
+	$('.gifImg').on('click', function(){
+		var selectedState = $(this).attr('data-state'); 
+		console.log(this);
+		console.log(selectedState);
+
+		if (selectedState === 'still'){
+			$(this).attr('src', $(this).data('animate'));
+			$(this).attr('data-state', 'animate');
+		}else{
+			$(this).attr('src', $(this).data('still'));
+			$(this).attr('data-state', 'still');
+		}
+
+	});
 }
 
 //calling information from GIPHY API
@@ -58,6 +62,9 @@ $('button').on('click', function() {
         var p = $(this).data('cartoon');
         console.log(this);
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    //clearing the old cartoon gifs
+	$('.cartoonGifsHere').empty();
 
      $.ajax({
      	url: queryURL,
@@ -70,13 +77,30 @@ $('button').on('click', function() {
                 for (var i = 0; i < results.length; i++) {
 
                 	var newGifDiv = $('<div class="item">');
-                	var gifImg = $('<img class="gifImg">').attr('src', response.data[i].images.fixed_height_small.url);
+                	var gifStillImg = $('<img class="gifImg">').attr('src', response.data[i].images.fixed_height_small_still.url);
+                	gifStillImg.attr('data-still', response.data[i].images.fixed_height_small_still.url).attr('data-animate', response.data[i].images.fixed_height.url).attr('data-state', "still");
 
-                	var gifRating = newGifDiv.append("Rating: " + response.data[i].rating);
-                	var gifStillPhoto = newGifDiv.append(gifImg);
+                	var gifRating = $('<p class="rating">').html("Rating: " + response.data[i].rating);
+                	//var movingGif = $('<img class="movingGifImg" id="active">').attr('src', response.data[i].images.fixed_height.url);
+                	//movingGif.hide();
+
+                	newGifDiv.append(gifRating);
+                	newGifDiv.append(gifStillImg);
+                	//newGifDiv.append(movingGif);
                 	$('.cartoonGifsHere').prepend(newGifDiv);
                 }
+
+                playPauseButton()
+
             });
     });    
 }
 
+
+
+
+$('document').ready(function() {
+	renderButtons();
+	giphyApiRequest();
+
+});
