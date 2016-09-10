@@ -21,11 +21,7 @@ $('#addCartoon').on('click', function(){
 	$('#cartoon-input').val("");
 	renderButtons();
 	giphyApiRequest();
-	
 	return false;
-
-
-
 });
 
 //clearing all gifs button
@@ -55,12 +51,13 @@ function playPauseButton() {
 		if (selectedState === 'still'){
 			$(this).attr('src', $(this).data('animate'));
 			$(this).attr('data-state', 'animate');
-			//$('this.playButton').hide();
+			$(this).siblings('.playButton').hide();
+			console.log($('this'));
 
 		}else{
 			$(this).attr('src', $(this).data('still'));
 			$(this).attr('data-state', 'still');
-			//$('this.playButton').show();
+			$(this).siblings('.playButton').show();
 		}
 
 	});
@@ -92,7 +89,7 @@ $('button').on('click', function() {
                 	var gifRating = $('<p class="rating">').html("Rating: " + response.data[i].rating);
                 	var playButtonImg = $('<img class="playButton">').attr('src', 'assets/images/playButton.png');
 
-                	//newGifDiv.append(playButtonImg);
+                	newGifDiv.append(playButtonImg);
                 	newGifDiv.append(gifStillImg);
                 	newGifDiv.append(gifRating);
                 	$('.cartoonGifsHere').prepend(newGifDiv);

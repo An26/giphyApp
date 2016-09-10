@@ -20,11 +20,13 @@ body{
 }
 
 aside {
+	//height: 800px;
 	position: static;
 	float: none;
 	border: 2px solid black;
 	margin: 10px;
 	padding: 10px;
+	//padding-top: 200px;
 	background-color: #9CCB19;
 	font-family: 'BioRhyme', serif;
 }
@@ -63,7 +65,7 @@ button {
 	opacity: 0.5;
 }
 
-/*.playButton [data-state='still'] {
+.playButton [data-state='still'] {
 	display: none;
 }
 
@@ -75,4 +77,13 @@ button {
 	width: 50px;
 	height: 50px;
 
+}
+
+/*
+@media (max-width: 980px) {
+	aside {
+		height: 300px;
+		padding: 20px;
+	}
 }*/
+
