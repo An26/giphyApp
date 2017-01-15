@@ -1,6 +1,8 @@
-#Welcome to my Giphy App
+#Welcome to my Giphy App!!
 
 [DEMO ME HERE](http://enigmatic-springs-91293.herokuapp.com/)
+
+![alt tab](https://github.com/An26/giphyApp/blob/master/assets/images/ScreenShot.PNG)
 
 ###This app uses the giphy api to call and find cartoon gifs that users and enter or click on the pre-filled buttons to display cartoon related gifs! 
 
